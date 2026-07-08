@@ -1,0 +1,2 @@
+// Page-level components assembled from smaller components.
+// Each file maps roughly to one route: IssueListPage, IssueDetailPage, etc.

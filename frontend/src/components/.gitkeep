@@ -1,0 +1,2 @@
+// Reusable, presentational UI building blocks.
+// Each component lives in its own folder: components/Button/Button.tsx

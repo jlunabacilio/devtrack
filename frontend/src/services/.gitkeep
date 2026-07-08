@@ -1,0 +1,3 @@
+// API client functions — one file per backend resource.
+// Each function wraps a fetch/axios call and returns typed data.
+// Example: issueService.ts — getIssues(), createIssue(), etc.

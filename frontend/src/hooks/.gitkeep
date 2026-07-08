@@ -1,0 +1,2 @@
+// Custom React hooks that encapsulate stateful or side-effect logic.
+// Example: useIssues.ts — fetches and caches the issue list.
