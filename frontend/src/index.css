@@ -1,0 +1,307 @@
+/* ============================================================
+   DevTrack — global stylesheet
+   ============================================================ */
+
+/* ── Reset / base ─────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  background: #f3f4f6;
+  color: #111827;
+  min-height: 100dvh;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  background: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ── Layout ───────────────────────────────────────────────── */
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* ── Board ────────────────────────────────────────────────── */
+.board {
+  display: flex;
+  flex: 1;
+  gap: 0;
+  overflow: hidden;
+}
+
+.board__sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background: #fff;
+  border-right: 1px solid #e5e7eb;
+  padding: 1.25rem;
+  overflow-y: auto;
+}
+
+.board__columns {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  align-items: flex-start;
+}
+
+.board__loading,
+.board__error {
+  grid-column: 1 / -1;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.board__loading {
+  color: #6b7280;
+}
+
+.board__error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+/* ── Column ───────────────────────────────────────────────── */
+.board__column {
+  flex: 1;
+  min-width: 240px;
+  max-width: 360px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.board__column-heading {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #374151;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.board__column-count {
+  background: #e5e7eb;
+  color: #6b7280;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.1em 0.55em;
+  min-width: 1.4em;
+  text-align: center;
+}
+
+.board__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.board__empty {
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+/* ── Issue card ───────────────────────────────────────────── */
+.issue-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.625rem;
+  padding: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
+  transition: box-shadow 0.15s ease;
+}
+
+.issue-card:hover {
+  box-shadow: 0 3px 8px rgb(0 0 0 / 8%);
+}
+
+.issue-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Priority badges */
+.issue-card__priority {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15em 0.55em;
+  border-radius: 9999px;
+}
+
+.priority-low    { background: #d1fae5; color: #065f46; }
+.priority-medium { background: #fef3c7; color: #92400e; }
+.priority-high   { background: #fee2e2; color: #991b1b; }
+.priority-critical {
+  background: #7f1d1d;
+  color: #fef2f2;
+}
+
+.issue-card__delete {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  padding: 0.25rem 0.4rem;
+  border-radius: 0.375rem;
+  line-height: 1;
+  transition: background 0.1s, color 0.1s;
+}
+
+.issue-card__delete:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.issue-card__title {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #111827;
+  line-height: 1.35;
+}
+
+.issue-card__description {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.issue-card__assignee {
+  font-size: 0.8125rem;
+  color: #6b7280;
+}
+
+.issue-card__advance {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #2563eb;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid #bfdbfe;
+  border-radius: 0.375rem;
+  background: #eff6ff;
+  transition: background 0.1s, border-color 0.1s;
+  margin-top: 0.25rem;
+}
+
+.issue-card__advance:hover {
+  background: #dbeafe;
+  border-color: #93c5fd;
+}
+
+/* ── New issue form ───────────────────────────────────────── */
+.new-issue-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.new-issue-form__heading {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.new-issue-form__error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.new-issue-form__label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.new-issue-form__input,
+.new-issue-form__textarea,
+.new-issue-form__select {
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  font: inherit;
+  font-size: 0.875rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: #111827;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+}
+
+.new-issue-form__input:focus,
+.new-issue-form__textarea:focus,
+.new-issue-form__select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 15%);
+}
+
+.new-issue-form__textarea {
+  resize: vertical;
+}
+
+.new-issue-form__submit {
+  margin-top: 0.375rem;
+  padding: 0.55rem 0;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  transition: background 0.15s;
+}
+
+.new-issue-form__submit:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.new-issue-form__submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
